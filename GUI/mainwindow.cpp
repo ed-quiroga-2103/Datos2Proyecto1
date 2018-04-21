@@ -11,11 +11,13 @@ MainWindow::MainWindow(){
 
     setup();
 
+
     //*********************************ADD OBJECTS********************************//
 
     layout->addWidget(textEditor,BorderLayout::Center);
     layout->addWidget(Stdout,BorderLayout::South);
-    layout->addWidget(Log,BorderLayout::East);
+    layout->addWidget(ram,BorderLayout::East);
+    layout->addWidget(toolBar,BorderLayout::North);
 
 
     //*******************************SET LAYOUT/SHOW*****************************//
@@ -30,19 +32,23 @@ void MainWindow::setup(){
     textEditor=new CodeEditor();
     syntax=new syntaxHightlight(textEditor->document());    
     Stdout=new QPlainTextEdit();
-    Log=new QTableWidget();
+    ram=new QPlainTextEdit();
+    toolBar=new QToolBar();
+    runButton = new botoncp(this->Stdout,this->ram,this->textEditor,"Run",true);
+    debugButton=new botoncp(this->Stdout,this->ram,this->textEditor,"Stop",false);
 
-    Stdout->appendPlainText(">>mainwindow::Stdout \n");
 
-    Log->setRowCount(40); //set number of items
-    Log->setColumnCount(4);
-    Log->setHorizontalHeaderLabels(QString("Memory;Value;Label;Counter").split(";"));
-
+    toolBar->addWidget(runButton->pButton);
+    toolBar->addWidget(debugButton->pButton);
+    Stdout->appendPlainText(">>mainwindow::Stdout \n>>C! Idle initialized...");
+    ram->appendPlainText("                   RAM LIVE VIEW    ");
+    ram->appendPlainText("_________________________________");
 
 }
 
-//***************************************BORDER LAYOUT****************************************//
-//********************************************************************************************//
+
+//***************************************BORDER LAYOUT******************************************//
+//**********************************************************************************************//
 
 BorderLayout::BorderLayout(QWidget *parent, int margin, int spacing)
       : QLayout(parent)

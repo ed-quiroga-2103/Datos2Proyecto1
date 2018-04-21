@@ -27,12 +27,15 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     textEditor.cpp \
-    mserver.cpp
+    CCompiler/Compiler.cpp CCompiler/mserver_client.cpp CCompiler/Logger.cpp CCompiler/Parser.cpp
+
 
 HEADERS += \
         mainwindow.h \
     textEditor.h \
-    mserver.h
+    botoncp.h \
+    CCompiler/Compiler.h CCompiler/mserver_client.h CCompiler/Logger.h CCompiler/Parser.h
+
 
 FORMS += \
         mainwindow.ui

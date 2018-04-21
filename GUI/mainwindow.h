@@ -5,7 +5,9 @@
 #include <QLayout>
 #include <QRect>
 #include <QTableWidget>
-
+#include <QPushButton>
+#include <QToolBar>
+#include <botoncp.h>
 
 //***************************************BORDER LAYOUT****************************************//
 //********************************************************************************************//
@@ -63,9 +65,11 @@ private:
     BorderLayout *layout=new BorderLayout;
     CodeEditor *textEditor;
     QPlainTextEdit *Stdout;
-    QTableWidget *Log;
+    QPlainTextEdit *ram;
     syntaxHightlight *syntax;
-
+    QToolBar *toolBar;
+    botoncp *runButton;
+    botoncp *debugButton;
 };
 
 
